@@ -9,6 +9,10 @@ class Operation {
         this.operand = operand;
     }
 
+    Operation getClone() {
+        return new Operation(operator, operand.getClone());
+    }
+
 
     Operator getOperator() {
         return operator;
