@@ -6,10 +6,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.BiFunction;
 
-public enum Operator implements BiFunction<Subject, Operand, Subject> {
+public enum Operator implements BiFunction<Subject, Operand, Subject>, SymbolProvider {
     IS {
         @Override
-        char getSymbol() {
+        public char getSymbol() {
             return '=';
         }
 
@@ -20,7 +20,7 @@ public enum Operator implements BiFunction<Subject, Operand, Subject> {
     },
     ADD {
         @Override
-        char getSymbol() {
+        public char getSymbol() {
             return '+';
         }
 
@@ -31,7 +31,7 @@ public enum Operator implements BiFunction<Subject, Operand, Subject> {
     },
     SUB {
         @Override
-        char getSymbol() {
+        public char getSymbol() {
             return '-';
         }
 
@@ -42,7 +42,7 @@ public enum Operator implements BiFunction<Subject, Operand, Subject> {
     },
     MULTI {
         @Override
-        char getSymbol() {
+        public char getSymbol() {
             return '*';
         }
 
@@ -53,7 +53,7 @@ public enum Operator implements BiFunction<Subject, Operand, Subject> {
     },
     DIVIDE {
         @Override
-        char getSymbol() {
+        public char getSymbol() {
             return '/';
         }
 
@@ -68,7 +68,7 @@ public enum Operator implements BiFunction<Subject, Operand, Subject> {
     },
     MODULO {
         @Override
-        char getSymbol() {
+        public char getSymbol() {
             return '%';
         }
 
@@ -83,7 +83,7 @@ public enum Operator implements BiFunction<Subject, Operand, Subject> {
     },
     POWER {
         @Override
-        char getSymbol() {
+        public char getSymbol() {
             return '^';
         }
 
@@ -94,7 +94,7 @@ public enum Operator implements BiFunction<Subject, Operand, Subject> {
     },
     SQRT {
         @Override
-        char getSymbol() {
+        public char getSymbol() {
             return '√';
         }
 
@@ -109,7 +109,7 @@ public enum Operator implements BiFunction<Subject, Operand, Subject> {
     },
     FACT {
         @Override
-        char getSymbol() {
+        public char getSymbol() {
             return '!';
         }
 
@@ -128,7 +128,7 @@ public enum Operator implements BiFunction<Subject, Operand, Subject> {
     },
     ABS {
         @Override
-        char getSymbol() {
+        public char getSymbol() {
             return 'a';
         }
 
@@ -139,7 +139,7 @@ public enum Operator implements BiFunction<Subject, Operand, Subject> {
     },
     LOG {
         @Override
-        char getSymbol() {
+        public char getSymbol() {
             return 'l';
         }
 
@@ -154,7 +154,7 @@ public enum Operator implements BiFunction<Subject, Operand, Subject> {
     },
     SIN {
         @Override
-        char getSymbol() {
+        public char getSymbol() {
             return 's';
         }
 
@@ -165,7 +165,7 @@ public enum Operator implements BiFunction<Subject, Operand, Subject> {
     },
     COS {
         @Override
-        char getSymbol() {
+        public char getSymbol() {
             return 'c';
         }
 
@@ -176,7 +176,7 @@ public enum Operator implements BiFunction<Subject, Operand, Subject> {
     },
     TAN {
         @Override
-        char getSymbol() {
+        public char getSymbol() {
             return 't';
         }
 
@@ -187,7 +187,7 @@ public enum Operator implements BiFunction<Subject, Operand, Subject> {
     },
     ROUND {
         @Override
-        char getSymbol() {
+        public char getSymbol() {
             return 'r';
         }
 
@@ -198,7 +198,7 @@ public enum Operator implements BiFunction<Subject, Operand, Subject> {
     },
     FLOOR {
         @Override
-        char getSymbol() {
+        public char getSymbol() {
             return 'f';
         }
 
@@ -209,7 +209,7 @@ public enum Operator implements BiFunction<Subject, Operand, Subject> {
     },
     MAX {
         @Override
-        char getSymbol() {
+        public char getSymbol() {
             return 'M';
         }
 
@@ -220,7 +220,7 @@ public enum Operator implements BiFunction<Subject, Operand, Subject> {
     },
     MIN {
         @Override
-        char getSymbol() {
+        public char getSymbol() {
             return 'm';
         }
 
@@ -230,8 +230,6 @@ public enum Operator implements BiFunction<Subject, Operand, Subject> {
         }
     },
     ;
-
-    abstract char getSymbol();
 
     private static final Map<Character, Operator> symbolMap = new HashMap<>();
 

@@ -1,9 +1,10 @@
 package org.songbird.calgen.domain.Calculator;
 
 abstract class Operand {
-    private double value;
+    private final double value;
 
     Operand() {
+        this.value = 0;
     }
 
     Operand(double value) {
@@ -76,9 +77,11 @@ class SubCalculator extends Operand {
     public SubCalculator(Express express) {
         this.calculator = Calculator.create(express);
     }
+
     public SubCalculator(Calculator original) {
         this.calculator = original;
     }
+
     @Override
     SubCalculator getClone() {
         return new SubCalculator(calculator);
@@ -86,7 +89,7 @@ class SubCalculator extends Operand {
 
     @Override
     public double getValue() {
-        return;
+        return calculator.perform();
     }
 
     @Override
