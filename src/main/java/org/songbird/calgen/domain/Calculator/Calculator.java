@@ -3,31 +3,33 @@ package org.songbird.calgen.domain.Calculator;
 import java.util.ArrayList;
 
 public class Calculator {
-    private ArrayList<Operation> operations;
+    private final ArrayList<Operation> operations;
 
-    private Calculator(Express express) {
-        this.express = express;
+    private Calculator(ArrayList<Operation> operations) {
+        this.operations = operations;
     }
 
-    public static Calculator create(Express express) {
-        return new Calculator(express);
+    public static Calculator create(Expression expression) {
+        Calculator calculator = new Calculator(expression.getOperations());
+        calculator.validate();
+        return calculator;
     }
 
     public Calculator setOperand(double[] input) throws IllegalArgumentException {
         int index = 0;
-        for (Operation operation : express.getOperations()) {
-            Operand operand = operation.getOperand();
-            if (operand.isCalculator()) {
-                double subCalcValue = operand.getValue();
-                operation.setOperand(new Constant(subCalcValue));
-            } else if (operand.isVariable()) {
-                if (index == input.length) {
-                    throw new IllegalArgumentException("입력 값의 길이가 필요한 변수의 개수보다 적습니다.");
-                }
-                operation.setOperand(new Constant(input[index]));
-                index++;
-            }
-        }
+//        for (Operation operation : express.getOperations()) {
+//            Operand operand = operation.getOperand();
+//            if (operand.isCalculator()) {
+//                double subCalcValue = operand.getValue();
+//                operation.setOperand(new Constant(subCalcValue));
+//            } else if (operand.isVariable()) {
+//                if (index == input.length) {
+//                    throw new IllegalArgumentException("입력 값의 길이가 필요한 변수의 개수보다 적습니다.");
+//                }
+//                operation.setOperand(new Constant(input[index]));
+//                index++;
+//            }
+//        }
         if (index < input.length) {
             throw new IllegalArgumentException("입력 값의 길이가 필요한 변수의 개수보다 많습니다.");
         }

@@ -1,6 +1,5 @@
 package org.songbird.calgen.domain.Calculator;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
 public class Interpreter {
@@ -15,9 +14,9 @@ public class Interpreter {
         return resultList;
     }
 
-//    public static Express decode(String expression) {
+//    public static Expression decode(String expression) {
 //        ArrayList<Operation> operationList = decodeOperations(expression);
-//        return new Express(expression, operationList);
+//        return new Expression(expression, operationList);
 //    }
 //
 //    private static ArrayList<Operation> decodeOperations(String expression) {
@@ -56,7 +55,7 @@ public class Interpreter {
 //        result += operation.getOperand().getValue();
 //        result += ";";
 //        return result;
-//    }
+//
 }
 
 //todo:SubCalculrator 구현,
@@ -67,3 +66,5 @@ public class Interpreter {
 
 
 //todo:코드 체크 정규식이 아니라 포인터와 인터프리터식으로 구현
+
+//todo:SymbolProvider, SymbolMap 부분은 꼭 코드리뷰 받아서 개선안을 듣자

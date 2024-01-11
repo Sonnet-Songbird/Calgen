@@ -74,8 +74,8 @@ class Subject extends Operand {
 class SubCalculator extends Operand {
     private final Calculator calculator;
 
-    public SubCalculator(Express express) {
-        this.calculator = Calculator.create(express);
+    public SubCalculator(Expression expression) {
+        this.calculator = Calculator.create(expression);
     }
 
     public SubCalculator(Calculator original) {
@@ -97,9 +97,11 @@ class SubCalculator extends Operand {
         return true;
     }
 
-
     public Calculator getCalculator() {
         return calculator;
     }
 
 }
+
+
+

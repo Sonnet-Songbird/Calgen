@@ -2,10 +2,10 @@ package org.songbird.calgen.domain.Calculator;
 
 import java.util.ArrayList;
 
-public class Express {
+public class Expression {
     private ArrayList<Operation> operations;
 
-    public Express(String expression, ArrayList<Operation> operations) {
+    public Expression(String expression, ArrayList<Operation> operations) {
         this.operations = operations;
     }
 
