@@ -2,9 +2,9 @@ package org.songbird.calgen.domain.Calculator;
 
 import java.util.ArrayList;
 
-public class Decoder {
+public class Translator {
 
-    private Decoder(String source) {
+    private Translator(String source) {
     }
 
     public static ArrayList<Calculator> decode(String source) {
