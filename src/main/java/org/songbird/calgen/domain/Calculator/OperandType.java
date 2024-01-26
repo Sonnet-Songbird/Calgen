@@ -1,5 +1,8 @@
 package org.songbird.calgen.domain.Calculator;
 
+import java.util.HashMap;
+import java.util.Map;
+
 enum OperandType implements SymbolProvider {
     CONSTANT {
         @Override
@@ -35,6 +38,18 @@ enum OperandType implements SymbolProvider {
         }
     };
 
+    private static final Map<Character, OperandType> symbolMap = new HashMap<>();
+
+    static {
+        for (OperandType operandType : OperandType.values()) {
+            symbolMap.put(operandType.getSymbol(), operandType);
+        }
+    }
+    public static OperandType getBySymbol(char symbol) {
+        return symbolMap.get(symbol);
+    }
+
     public abstract Operand create(double value);
+
 }
 

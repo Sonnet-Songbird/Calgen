@@ -243,7 +243,7 @@ public enum Operator implements BiFunction<Subject, Operand, Subject>, SymbolPro
         return String.valueOf(getSymbol()).equals(string);
     }
 
-    public static Operator fromSymbol(char symbol) {
+    public static Operator getBySymbol(char symbol) {
         return symbolMap.get(symbol);
     }
 
