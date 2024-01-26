@@ -2,12 +2,12 @@ package org.songbird.calgen.domain.Calculator;
 
 import java.util.ArrayList;
 
-public class Interpreter {
+public class Decoder {
 
-    private Interpreter(String source) {
+    private Decoder(String source) {
     }
 
-    public static ArrayList<Calculator> interpret(String source) {
+    public static ArrayList<Calculator> decode(String source) {
         ArrayList<Calculator> resultList = new ArrayList<>();
         int pointer = 0;
 
