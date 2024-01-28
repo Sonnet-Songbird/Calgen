@@ -36,13 +36,13 @@ public class Calculator {
         return this;
     }
 
-    double perform() throws IllegalArgumentException {
+    Result perform() throws IllegalArgumentException {
         validate();
         Subject subject = new Subject();
         for (Operation operation : operations) {
             subject = operation.getOperator().apply(subject, operation.getOperand());
         }
-        return subject.getValue();
+        return subject.complete();
     }
 
     private void validate() throws IllegalArgumentException {

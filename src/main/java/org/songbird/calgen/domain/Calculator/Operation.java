@@ -9,11 +9,6 @@ class Operation {
         this.operand = operand;
     }
 
-    Operation getClone() {
-        return new Operation(operator, operand.getClone());
-    }
-
-
     Operator getOperator() {
         return operator;
     }
@@ -25,5 +20,7 @@ class Operation {
     public void setOperand(Constant constant) {
         this.operand = constant;
     }
+    public Subject operate(Subject subject) {
+        return operator.apply(subject, operand);
+    }
 }
-

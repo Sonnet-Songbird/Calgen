@@ -1,77 +1,113 @@
 package org.songbird.calgen.domain.Calculator;
 
-abstract class Operand {
+interface Operand {
+    double getValue();
+
+    boolean isOperable();
+}
+
+class Subject implements Operand {
     private final double value;
 
-    Operand() {
+    public Subject() {
         this.value = 0;
     }
 
-    Operand(double value) {
+    Subject(double value) {
         this.value = value;
     }
 
+    @Override
     public double getValue() {
         return value;
     }
 
-    public boolean isVariable() {
+    @Override
+    public boolean isOperable() {
         return false;
     }
 
-    public boolean isCalculator() {
-        return false;
+    public Result complete() {
+        return new Result(value);
     }
-
-    abstract Operand getClone();
-
 }
 
-class Constant extends Operand {
+class Constant implements Operand {
+    private final double value;
 
-    public Constant(double value) {
+    Constant(double value) {
+        this.value = value;
+    }
+
+    @Override
+    public double getValue() {
+        return value;
+    }
+
+    @Override
+    public boolean isOperable() {
+        return false;
+    }
+}
+
+class Variable implements Operand {
+    private Double value;
+    private boolean isSet = false;
+
+    public Variable() {
+    }
+
+    public void setValue(double value) {
+        if (!isSet) {
+            this.value = value;
+            isSet = true;
+        } else {
+            throw new IllegalStateException("Variable의 값은 한 번만 할당 가능합니다.");
+        }
+    }
+
+    @Override
+    public double getValue() {
+        return value;
+    }
+
+    @Override
+    public boolean isOperable() {
+        return isSet;
+    }
+}
+
+class Result implements Operand {
+    public final double value;
+
+    public Result(double value) {
+        this.value = value;
+    }
+
+    @Override
+    public double getValue() {
+        return value;
+    }
+
+    @Override
+    public boolean isOperable() {
+        return false;
+    }
+}
+
+class SubResult extends Result {
+
+    public SubResult(double value) {
         super(value);
     }
 
     @Override
-    Constant getClone() {
-        return new Constant(getValue());
-    }
-
-
-}
-
-class Variable extends Operand {
-
-    @Override
-    public boolean isVariable() {
+    public boolean isOperable() {
         return true;
     }
-
-    @Override
-    Variable getClone() {
-        return new Variable();
-    }
-
 }
 
-
-class Subject extends Operand {
-    public Subject(double value) {
-        super(value);
-    }
-
-    @Override
-    Subject getClone() {
-        return new Subject(getValue());
-    }
-
-    public Subject() {
-        super();
-    }
-}
-
-class SubCalculator extends Operand {
+class SubCalculator implements Operand {
     private final Calculator calculator;
 
     public SubCalculator(Expression expression) {
@@ -83,25 +119,17 @@ class SubCalculator extends Operand {
     }
 
     @Override
-    SubCalculator getClone() {
-        return new SubCalculator(calculator);
-    }
-
-    @Override
     public double getValue() {
-        return calculator.perform();
+        SubResult result = (SubResult) calculator.perform();
+        return result.getValue();
     }
 
     @Override
-    public boolean isCalculator() {
-        return true;
+    public boolean isOperable() {
+        return false;
     }
 
     public Calculator getCalculator() {
         return calculator;
     }
-
 }
-
-
-

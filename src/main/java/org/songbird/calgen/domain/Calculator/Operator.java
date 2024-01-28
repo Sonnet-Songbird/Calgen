@@ -239,10 +239,6 @@ public enum Operator implements BiFunction<Subject, Operand, Subject>, SymbolPro
         }
     }
 
-    public boolean equals(String string) {
-        return String.valueOf(getSymbol()).equals(string);
-    }
-
     public static Operator getBySymbol(char symbol) {
         return symbolMap.get(symbol);
     }
