@@ -1,4 +1,5 @@
 package org.songbird.calgen.domain.Calculator;
+import java.util.ArrayList;
 
 class Operation {
     private final Operator operator;
@@ -22,5 +23,25 @@ class Operation {
     }
     public Subject operate(Subject subject) {
         return operator.apply(subject, operand);
+    }
+}
+
+
+class Operations {
+    ArrayList<Operation> operations;
+
+    private Operations() {
+    }
+
+    static Operations init() {
+        return new Operations();
+    }
+
+    void add(Operation operation) {
+        operations.add(operation);
+    }
+
+    public ArrayList<Operation> getOperations() {
+        return operations;
     }
 }

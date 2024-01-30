@@ -1,5 +1,4 @@
 package org.songbird.calgen.domain.Calculator;
-
 import java.util.ArrayList;
 
 public class Calculator {
@@ -9,8 +8,8 @@ public class Calculator {
         this.operations = operations;
     }
 
-    public static Calculator create(Expression expression) {
-        Calculator calculator = new Calculator(expression.getOperations());
+    public static Calculator create(Operations operations) {
+        Calculator calculator = new Calculator(operations.getOperations());
         calculator.validate();
         return calculator;
     }
