@@ -46,7 +46,7 @@ public class Calculator {
 
     private void validate() throws IllegalArgumentException {
         if (operations.isEmpty()) {
-            throw new IllegalArgumentException("perform 메소드 실행 중 예외 발생 : operation이 없습니다.");
+            throw new IllegalArgumentException("perform 메소드 실행 중 예외 발생 : Operation이 없습니다.");
         }
         if (!operations.get(0).getOperator().equals(Operator.IS))
             throw new IllegalArgumentException("perform 메소드 실행 중 예외 발생 : 첫번째 Operator는 IS여야합니다.");
