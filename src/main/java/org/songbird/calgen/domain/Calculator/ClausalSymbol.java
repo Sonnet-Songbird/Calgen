@@ -2,6 +2,7 @@ package org.songbird.calgen.domain.Calculator;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 public enum ClausalSymbol implements SymbolProvider {
     CONDITIONAL {
@@ -40,12 +41,13 @@ public enum ClausalSymbol implements SymbolProvider {
             symbolMap.put(clausalSymbol.getEndSymbol(), clausalSymbol);
         }
     }
-    public static ClausalSymbol getBySymbol(char symbol) {
-        return symbolMap.get(symbol);
+
+    static Optional<SymbolProvider> getBySymbol(char symbol) {
+        return Optional.ofNullable(symbolMap.get(symbol));
     }
 
-    public static ClausalSymbol getByEndSymbol(char symbol) {
-        return symbolMap.get(symbol);
+    static Optional<SymbolProvider> getByEndSymbol(char symbol) {
+        return Optional.ofNullable(symbolMap.get(symbol));
     }
 
     @Override

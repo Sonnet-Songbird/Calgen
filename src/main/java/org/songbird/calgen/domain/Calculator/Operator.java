@@ -4,6 +4,7 @@ package org.songbird.calgen.domain.Calculator;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.function.BiFunction;
 
 public enum Operator implements BiFunction<Subject, Operand, Subject>, SymbolProvider {
@@ -239,8 +240,8 @@ public enum Operator implements BiFunction<Subject, Operand, Subject>, SymbolPro
         }
     }
 
-    public static Operator getBySymbol(char symbol) {
-        return symbolMap.get(symbol);
+    static Optional<SymbolProvider> getBySymbol(char symbol) {
+        return Optional.ofNullable(symbolMap.get(symbol));
     }
 
 }

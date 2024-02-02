@@ -2,6 +2,7 @@ package org.songbird.calgen.domain.Calculator;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 enum OperandType implements SymbolProvider {
     CONSTANT {
@@ -45,8 +46,8 @@ enum OperandType implements SymbolProvider {
             symbolMap.put(operandType.getSymbol(), operandType);
         }
     }
-    public static OperandType getBySymbol(char symbol) {
-        return symbolMap.get(symbol);
+    public static Optional<SymbolProvider> getBySymbol(char symbol) {
+        return Optional.ofNullable(symbolMap.get(symbol));
     }
 
     public abstract Operand create(double value);
