@@ -14,7 +14,7 @@ class Operation {
         this.operand = operand;
     }
 
-
+//todo: 예외 핸들링 클래스를 분리하고 만들 떄, 각 예외 케이스에 따른 동작을 SymbolProvider 구현체에서 처리하여 호출하도록
     public static Operation pop(Deque<Character> deque) {
         Operator operator = null;
         Operand operand = null;
