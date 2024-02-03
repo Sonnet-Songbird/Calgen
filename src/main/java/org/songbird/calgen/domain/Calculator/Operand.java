@@ -62,7 +62,7 @@ class Variable implements Operand {
             this.value = value;
             isSet = true;
         } else {
-            throw new IllegalStateException("Variable의 값은 한 번만 할당 가능합니다.");
+            throw new IllegalStateException("Variable 값은 한 번만 할당 가능합니다.");
         }
     }
 
@@ -110,8 +110,8 @@ class SubResult extends Result {
 class SubCalculator implements Operand {
     private final Calculator calculator;
 
-    public SubCalculator(Expression expression) {
-        this.calculator = Calculator.create(expression);
+    public SubCalculator(Operations operations) {
+        this.calculator = Calculator.create(operations);
     }
 
     public SubCalculator(Calculator original) {
