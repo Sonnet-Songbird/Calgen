@@ -49,6 +49,7 @@ todo:SubCalculrator 구현,
     인수 클래스화,
 
 todo:SymbolProvider, SymbolMap 부분은 꼭 코드리뷰 받아서 개선안을 듣자
+    A : 데이터 플로우의 관리는 객체지향적이지만 SymbolProvider의 구현체를 파싱하는 부분은 여전히 다형성이 적용되지 않았다.
  */
 }
 
