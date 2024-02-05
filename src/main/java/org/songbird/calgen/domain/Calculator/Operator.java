@@ -2,7 +2,6 @@
 
 package org.songbird.calgen.domain.Calculator;
 
-import java.util.Optional;
 import java.util.function.BiFunction;
 
 public enum Operator implements BiFunction<Subject, Operand, Subject>, Symbolic {
@@ -230,15 +229,9 @@ public enum Operator implements BiFunction<Subject, Operand, Subject>, Symbolic 
     },
     ;
 
-
     static {
         for (Operator operator : values()) {
             SymbolMap.put(operator.getSymbol(), operator);
         }
     }
-
-    static Optional<Symbolic> getBySymbol(char symbol) {
-        return Optional.ofNullable(symbolMap.get(symbol));
-    }
-
 }

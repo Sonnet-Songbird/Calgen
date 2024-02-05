@@ -2,7 +2,6 @@ package org.songbird.calgen.domain.Calculator;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 
 public enum ClausalSymbol implements Symbolic {
     CONDITIONAL {
@@ -27,27 +26,20 @@ public enum ClausalSymbol implements Symbolic {
             return ')';
         }
     };
-    private static final Map<Character, ClausalSymbol> symbolMap = new HashMap<>();
     private static final Map<Character, ClausalSymbol> endSymbolMap = new HashMap<>();
 
     static {
         for (ClausalSymbol clausalSymbol : ClausalSymbol.values()) {
-            symbolMap.put(clausalSymbol.getSymbol(), clausalSymbol);
+            SymbolMap.put(clausalSymbol.getSymbol(), clausalSymbol);
         }
     }
 
+
+    //todo: endSymbol 구분해서 구현. 아마도 이건 이 클래스 내에서 처리 해야 할 것.
     static {
         for (ClausalSymbol clausalSymbol : ClausalSymbol.values()) {
-            symbolMap.put(clausalSymbol.getEndSymbol(), clausalSymbol);
+            endSymbolMap.put(clausalSymbol.getEndSymbol(), clausalSymbol);
         }
-    }
-
-    static Optional<Symbolic> getBySymbol(char symbol) {
-        return Optional.ofNullable(symbolMap.get(symbol));
-    }
-
-    static Optional<Symbolic> getByEndSymbol(char symbol) {
-        return Optional.ofNullable(symbolMap.get(symbol));
     }
 
     @Override

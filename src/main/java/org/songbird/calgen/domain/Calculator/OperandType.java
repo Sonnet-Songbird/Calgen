@@ -1,9 +1,5 @@
 package org.songbird.calgen.domain.Calculator;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-
 enum OperandType implements Symbolic {
     CONSTANT {
         @Override
@@ -39,15 +35,11 @@ enum OperandType implements Symbolic {
         }
     };
 
-    private static final Map<Character, OperandType> symbolMap = new HashMap<>();
 
     static {
         for (OperandType operandType : OperandType.values()) {
-            symbolMap.put(operandType.getSymbol(), operandType);
+            SymbolMap.put(operandType.getSymbol(), operandType);
         }
-    }
-    public static Optional<Symbolic> getBySymbol(char symbol) {
-        return Optional.ofNullable(symbolMap.get(symbol));
     }
 
     public abstract Operand create(double value);

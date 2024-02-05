@@ -19,17 +19,17 @@ class Translator {
 
     //Todo: (추후 개선사항) 가능하면 getBySymbol 부분의 메소드를 분리하고 싶음.
     public static Optional<Symbolic> decode(char code) {
-        Optional<Symbolic> result;
-        result = Operator.getBySymbol(code);
-        if (result.isPresent()) {
-            return result;
-        }
-        result = OperandType.getBySymbol(code);
-        if (result.isPresent())
-            return result;
-
-        result = ClausalSymbol.getBySymbol(code);
-        // ClausalSymbol Solver
+        Optional<Symbolic> result = null;
+//        result = Operator.getBySymbol(code);
+//        if (result.isPresent()) {
+//            return result;
+//        }
+//        result = OperandType.getBySymbol(code);
+//        if (result.isPresent())
+//            return result;
+//
+//        result = ClausalSymbol.getBySymbol(code);
+//        // ClausalSymbol Solver
         return result;
     }
 
