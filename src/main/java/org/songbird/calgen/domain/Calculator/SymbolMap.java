@@ -18,7 +18,7 @@ class SymbolMap {
     }
 
 
-    public Optional<Symbolic> getBySymbol(Character character) {
+    public static Optional<Symbolic> get(Character character) {
         return Optional.ofNullable(symbolMap.get(character));
     }
 }
