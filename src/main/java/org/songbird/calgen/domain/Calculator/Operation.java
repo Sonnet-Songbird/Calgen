@@ -21,10 +21,10 @@ class Operation {
         boolean end = false;
         while (!end) {
             char code = deque.pop();
-            Optional<SymbolProvider> optionalResult = Translator.decode(code);
+            Optional<Symbolic> optionalResult = Translator.decode(code);
             if (optionalResult.isEmpty())
                 throw new IllegalArgumentException("코드에 잘못된 문자가 포함 되어 있습니다. : " + code);
-            SymbolProvider result = optionalResult.get();
+            Symbolic result = optionalResult.get();
             if (result instanceof Operator && operator == null)
                 operator = (Operator) result;
             else if (result instanceof Operand && operand == null)

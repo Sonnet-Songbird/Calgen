@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-public enum ClausalSymbol implements SymbolProvider {
+public enum ClausalSymbol implements Symbolic {
     CONDITIONAL {
         @Override
         public char getSymbol() {
@@ -42,11 +42,11 @@ public enum ClausalSymbol implements SymbolProvider {
         }
     }
 
-    static Optional<SymbolProvider> getBySymbol(char symbol) {
+    static Optional<Symbolic> getBySymbol(char symbol) {
         return Optional.ofNullable(symbolMap.get(symbol));
     }
 
-    static Optional<SymbolProvider> getByEndSymbol(char symbol) {
+    static Optional<Symbolic> getByEndSymbol(char symbol) {
         return Optional.ofNullable(symbolMap.get(symbol));
     }
 

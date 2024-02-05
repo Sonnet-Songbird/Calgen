@@ -2,12 +2,10 @@
 
 package org.songbird.calgen.domain.Calculator;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Optional;
 import java.util.function.BiFunction;
 
-public enum Operator implements BiFunction<Subject, Operand, Subject>, SymbolProvider {
+public enum Operator implements BiFunction<Subject, Operand, Subject>, Symbolic {
     IS {
         @Override
         public char getSymbol() {
@@ -232,15 +230,14 @@ public enum Operator implements BiFunction<Subject, Operand, Subject>, SymbolPro
     },
     ;
 
-    private static final Map<Character, Operator> symbolMap = new HashMap<>();
 
     static {
         for (Operator operator : values()) {
-            symbolMap.put(operator.getSymbol(), operator);
+            SymbolMap.put(operator.getSymbol(), operator);
         }
     }
 
-    static Optional<SymbolProvider> getBySymbol(char symbol) {
+    static Optional<Symbolic> getBySymbol(char symbol) {
         return Optional.ofNullable(symbolMap.get(symbol));
     }
 

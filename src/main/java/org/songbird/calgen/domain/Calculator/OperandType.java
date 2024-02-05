@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-enum OperandType implements SymbolProvider {
+enum OperandType implements Symbolic {
     CONSTANT {
         @Override
         public char getSymbol() {
@@ -46,7 +46,7 @@ enum OperandType implements SymbolProvider {
             symbolMap.put(operandType.getSymbol(), operandType);
         }
     }
-    public static Optional<SymbolProvider> getBySymbol(char symbol) {
+    public static Optional<Symbolic> getBySymbol(char symbol) {
         return Optional.ofNullable(symbolMap.get(symbol));
     }
 
