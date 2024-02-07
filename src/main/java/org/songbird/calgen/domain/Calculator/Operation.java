@@ -70,9 +70,8 @@ class Operations {
         return operations;
     }
 
-    public static Operations of(String string) {
+    public static Operations of(Deque<Character> deque) {
         Operations operations = new Operations();
-        Deque<Character> deque = Translator.dequeOf(string);
         while (deque.peekFirst() != null) {
             operations.add(Operation.pop(deque));
         }

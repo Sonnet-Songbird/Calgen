@@ -1,17 +1,25 @@
 package org.songbird.calgen.domain.Calculator;
+
 import java.util.ArrayList;
+import java.util.Deque;
 
 public class Calculator {
     private final ArrayList<Operation> operations;
 
-    private Calculator(ArrayList<Operation> operations) {
-        this.operations = operations;
+    private Calculator(Operations operations) {
+        this.operations = operations.getOperations();
     }
 
-    public static Calculator create(Operations operations) {
-        Calculator calculator = new Calculator(operations.getOperations());
+    public static Calculator of(Deque<Character> deque) {
+        Calculator calculator = new Calculator(Operations.of(deque));
         calculator.validate();
         return calculator;
+    }
+
+
+    //todo: 이런 거 안티 패턴인가?
+    public static Calculator of(String string) {
+        return of(Translator.dequeOf(string));
     }
 
     public Calculator setOperand(double[] input) throws IllegalArgumentException {

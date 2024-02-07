@@ -110,8 +110,8 @@ class SubResult extends Result {
 class SubCalculator implements Operand {
     private final Calculator calculator;
 
-    public SubCalculator(Operations operations) {
-        this.calculator = Calculator.create(operations);
+    public SubCalculator(String string) {
+        this.calculator = Calculator.of(string);
     }
 
     public SubCalculator(Calculator original) {
