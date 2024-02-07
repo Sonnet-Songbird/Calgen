@@ -2,6 +2,7 @@
 
 package org.songbird.calgen.domain.Calculator;
 
+import java.util.Deque;
 import java.util.function.BiFunction;
 
 public enum Operator implements BiFunction<Subject, Operand, Subject>, Symbolic {
@@ -233,5 +234,10 @@ public enum Operator implements BiFunction<Subject, Operand, Subject>, Symbolic 
         for (Operator operator : values()) {
             SymbolMap.put(operator.getSymbol(), operator);
         }
+    }
+
+    @Override
+    public void onRegister(Deque<Character> deque) {
+        //Empty Implementation
     }
 }

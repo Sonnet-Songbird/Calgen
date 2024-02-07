@@ -1,5 +1,7 @@
 package org.songbird.calgen.domain.Calculator;
 
+import java.util.Deque;
+
 enum OperandType implements Symbolic {
     CONSTANT {
         @Override
@@ -10,6 +12,11 @@ enum OperandType implements Symbolic {
         @Override
         public Operand create(double value) {
             return new Constant(value);
+        }
+
+        @Override
+        public void onRegister(Deque<Character> deque) {
+            //todo: Implementation needed
         }
     },
     VARIABLE {
@@ -22,6 +29,11 @@ enum OperandType implements Symbolic {
         public Operand create(double value) {
             return new Variable();
         }
+
+        @Override
+        public void onRegister(Deque<Character> deque) {
+            //todo: Implementation needed
+        }
     },
     SUBJECT {
         @Override
@@ -32,6 +44,11 @@ enum OperandType implements Symbolic {
         @Override
         public Operand create(double value) {
             return new Subject(value);
+        }
+
+        @Override
+        public void onRegister(Deque<Character> deque) {
+            // empty implementation
         }
     };
 

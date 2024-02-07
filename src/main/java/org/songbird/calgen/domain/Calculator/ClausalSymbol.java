@@ -1,5 +1,6 @@
 package org.songbird.calgen.domain.Calculator;
 
+import java.util.Deque;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,6 +15,12 @@ public enum ClausalSymbol implements Symbolic {
         public char getEndSymbol() {
             return ';';
         }
+
+        @Override
+        public void onRegister(Deque<Character> deque) {
+            //todo: Implementation needed
+
+        }
     },
     SUBCALC {
         @Override
@@ -24,6 +31,11 @@ public enum ClausalSymbol implements Symbolic {
         @Override
         public char getEndSymbol() {
             return ')';
+        }
+
+        @Override
+        public void onRegister(Deque<Character> deque) {
+            //todo: Implementation needed
         }
     };
     private static final Map<Character, ClausalSymbol> endSymbolMap = new HashMap<>();
@@ -45,5 +57,9 @@ public enum ClausalSymbol implements Symbolic {
     @Override
     public abstract char getSymbol();
 
+
     public abstract char getEndSymbol();
+
+
+
 }
