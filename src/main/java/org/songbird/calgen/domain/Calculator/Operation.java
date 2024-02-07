@@ -72,7 +72,7 @@ class Operations {
 
     public static Operations of(Deque<Character> deque) {
         Operations operations = new Operations();
-        while (deque.peekFirst() != null) {
+        while (!deque.isEmpty()) {
             operations.add(Operation.pop(deque));
         }
         return operations;
