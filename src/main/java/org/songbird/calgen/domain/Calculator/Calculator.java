@@ -75,10 +75,11 @@ public class Calculator {
 
         public void init(Calculator calculator) {
             InputReceiverManager result = new InputReceiverManager();
-            extract(calculator);
+            scan(calculator);
         }
 
-        private void extract(Calculator calculator) {
+        //todo: 이렇게 스캔해서 찾는 게 아니라 onRegister에서 처리 할 수 없을까?
+        private void scan(Calculator calculator) {
             //todo: implementation needed
         }
     }
