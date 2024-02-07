@@ -1,18 +1,24 @@
 package org.songbird.calgen.domain.Calculator;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
+import java.util.List;
 
 public class Calculator {
     private final ArrayList<Operation> operations;
+    private final InputReceiverManager receiverManager;
+
 
     private Calculator(Operations operations) {
         this.operations = operations.getOperations();
+        this.receiverManager = new InputReceiverManager();
     }
 
     public static Calculator of(Deque<Character> deque) {
         Calculator calculator = new Calculator(Operations.of(deque));
         calculator.validate();
+        calculator.receiverManager.init(calculator);
         return calculator;
     }
 
@@ -59,4 +65,45 @@ public class Calculator {
         if (!operations.get(0).getOperator().equals(Operator.IS))
             throw new IllegalArgumentException("perform 메소드 실행 중 예외 발생 : 첫번째 Operator는 IS여야합니다.");
     }
+
+
+    static class InputReceiverManager {
+        private final InputReceivers inputReceivers = new InputReceivers();
+
+        private InputReceiverManager() {
+        }
+
+        public void init(Calculator calculator) {
+            InputReceiverManager result = new InputReceiverManager();
+            extract(calculator);
+        }
+
+        private void extract(Calculator calculator) {
+            //todo: implementation needed
+        }
+    }
+
+    static class InputReceivers {
+        private final List<InputReceiver> inputReceivers = new ArrayList<>();
+
+        Deque<InputReceiver> getDeque() {
+            return new ArrayDeque<>(inputReceivers);
+        }
+    }
+
+    static class InputReceiver {
+        int id;
+        Variable receiver;
+
+        @Override
+        public String toString() {
+            return "InputReceiver{" +
+                    "id=" + id +
+                    ", receiver=" + receiver +
+                    '}';
+        }
+    }
+
+
+
 }
