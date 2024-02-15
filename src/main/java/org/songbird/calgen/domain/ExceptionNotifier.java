@@ -6,7 +6,7 @@ public class ExceptionNotifier {
     private final Exception exception;
     private final String message;
 
-    private static enum errMsg {
+    private enum errMsg {
         IllegalStateException("프로그램 오류입니다. 개발자에게 문의 해 주세요."),
         ;
         private final String msg;
